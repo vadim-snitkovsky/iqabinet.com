@@ -28,6 +28,7 @@ function cleanPage(html, route) {
   html = html.replace(/<div style="position:relative;z-index:99999[^>]*>Archived reconstruction[\s\S]*?<\/div>/i, "");
   html = html.replace(/<!--\s*Quick Cache[\s\S]*?-->/gi, "");
   html = html.replace(/<link rel="alternate"[^>]*>\s*/gi, "");
+  html = html.replace(/<!--<style[^>]*bootstrap\.css[^>]*><\/style>-->\s*/gi, "");
   html = html.replace(/<link rel="EditURI"[^>]*>\s*/gi, "");
   html = html.replace(/<link rel="wlwmanifest"[^>]*>\s*/gi, "");
   html = html.replace(/<meta name="generator"[^>]*>\s*/gi, "");
@@ -38,8 +39,10 @@ function cleanPage(html, route) {
   html = html.replace(/\.\/assets\//g, "/assets/");
   html = html.replace(/https?:\/\/(?:www\.)?iqabinet\.com/gi, canonical);
   html = html.replace(/https?:\/\/app\.iqabinet\.com\/(?:login|signup)\.html/gi, "/contact/");
-  html = html.replace(/href="(?:\.?\/)?\?page_id=4944"/gi, 'href="/terms-of-service/"');
-  html = html.replace(/href="(?:\.?\/)?\?p=5053"/gi, 'href="/privacy-and-security-bill-of-rights/"');
+  html = html.replace(/www\.iqabinet\.com\/signup/gi, "/contact/");
+  html = html.replace(/href=(['"])(?:\.\/)?\?page_id=4944\1/gi, 'href="/terms-of-service/"');
+  html = html.replace(/href=(['"])(?:\.\/)?\?p=5053\1/gi, 'href="/privacy-and-security-bill-of-rights/"');
+  html = html.replace(new RegExp(`href=(['"])${canonical}\\/(?:author\\/iqabinet|category\\/(?:organization|security))\\/\\1`, "gi"), 'href="/blog/"');
   for (const [file, target] of Object.entries(routes)) {
     html = html.replaceAll(`./${file}`, target);
   }
