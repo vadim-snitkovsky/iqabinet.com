@@ -52,7 +52,7 @@ function cleanPage(html, route) {
   }
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${titleFor(route)}</title>`);
   const meta = `\n<meta name="description" content="iQabinet brings important documents, accounts, and household information together in one secure place.">\n<meta property="og:title" content="${titleFor(route)}">\n<meta property="og:type" content="website">\n<meta property="og:url" content="${canonical}${route}">\n<meta property="og:site_name" content="iQabinet">\n<meta property="og:image" content="${canonical}/media/Logo150x46.png-704fd15d4a">\n<meta name="twitter:card" content="summary">\n<link rel="canonical" href="${canonical}${route}">`;
-  html = html.replace(/<\/head>/i, `${meta}\n<link rel="stylesheet" href="/site.css">\n</head>`);
+  html = html.replace(/<\/head>/i, `${meta}\n<link rel="stylesheet" href="/site.css?v=20260910">\n</head>`);
   if (route === "/contact/") {
     html = html.replace(/<form\b[\s\S]*?<\/form>/i, contactPanel);
   }
