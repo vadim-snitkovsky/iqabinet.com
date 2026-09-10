@@ -36,8 +36,8 @@ function cleanPage(html, route) {
   html = html.replace(/\.\/assets\//g, "/assets/");
   html = html.replace(/https?:\/\/(?:www\.)?iqabinet\.com/gi, canonical);
   html = html.replace(/https?:\/\/app\.iqabinet\.com\/(?:login|signup)\.html/gi, "/contact/");
-  html = html.replace(/href="\/?\?page_id=4944"/gi, 'href="/terms-of-service/"');
-  html = html.replace(/href="\/?\?p=5053"/gi, 'href="/privacy-and-security-bill-of-rights/"');
+  html = html.replace(/href="(?:\.?\/)?\?page_id=4944"/gi, 'href="/terms-of-service/"');
+  html = html.replace(/href="(?:\.?\/)?\?p=5053"/gi, 'href="/privacy-and-security-bill-of-rights/"');
   for (const [file, target] of Object.entries(routes)) {
     html = html.replaceAll(`./${file}`, target);
   }
