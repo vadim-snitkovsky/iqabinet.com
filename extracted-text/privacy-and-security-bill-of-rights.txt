@@ -1,0 +1,39 @@
+
+	•	Product
+	•	Security
+	•	Bill of Rights
+	•	Blog
+	•	Contact Us
+	•	Login
+
+
+
+	•	Product
+	•	Security
+	•	Bill of Rights
+	•	Blog
+	•	Contact Us
+	•	Login
+
+
+Privacy and Security Bill of Rights
+In 1789, initially introduced by James Madison, the first ten amendments were made to the U.S. Constitution.  At their core, they guaranteed a set of personal freedoms for every American, and today, have withstood the test of time.  While rights such as free speech and freedom of religion may seem obvious today, James Madison and 1st U.S. Congress were very much charting new ground as they amended with U.S. Constitution with the Bill of Rights.
+As iQabinet began to think about its Privacy and Security policy, we started with the unwavering notion that it is first and foremost a set of rights that all of our customers should expect.  While some of these may not be commonplace across the Internet today, over the next 10, 20 years, we would expect we would all take these elements for granted from a service like iQabinet.
+The following ten elements, we call our iQabinet’s Privacy and Security Bill of Rights.  They form the bedrock for the iQabinet service, and serve as our Privacy and Security Policy.
+iQabinet Privacy and Security Bill of Rights:
+	1	You are our customer, not our product You are our customer, plain and simple.  iQabinet’s one and only mission it is to serve you.  Why is this the first right for our users?  Simply put, you know where our loyalties lie.  What does it mean by calling users a “product” – it typically  means that website is adding users to advertise to them.  Yes, as great a service as Google, Facebook, Twitter are, YOU are their product – the advertiser is their customer. For a service like iQabinet, where we are managing the important things in your life, we believe its a right that you and your information are the customer and not the product – so there is NEVER a question as to where iQabinet’s loyalties are
+	2	Always err on the side of privacy and security At every juncture a company faces choices.  The difficult choices require compromises, and “win-win” situations are not always possible.  There are no shortage of decisions a company must make that affect privacy and security – at iQabinet we have always, and will always err on the side of privacy and security on these decisions
+	3	Its always HTTPS From the moment you enter our site, whether its our homepage, our blog, or our application, its HTTPS.  What does that mean?  It means that all communication between your browser and iQabinet is encrypted – and thereby the communications between you and iQabinet are private
+	4	100% encrypted data storage iQabinet encrypts all your data.  Everything.  How is this different than HTTPS?  using HTTPS means that all communication between your browser and iQabinet is encrypted.  Encrypting data storage, means that we encrypt everything that we store on your behalf, whether you are accessing it or not.  Yup, everything is encrypted.  So everything we store is encrypted, and everything we communicate with you is encrypted!
+	5	You control your key Your should be the only person who decides who has the decryption key to your data.  What does this mean?  The key is the passcode to decrypt your data.  All banks maintain a copy of the decryption key for your account – for a good reason, they need access to your account’s data.  Many companies for a variety of reasons maintain the decryption key to your account – and in most cases, they don’t make this well known to you.  At iQabinet, we have a simple policy – just like the key to your home, its your key, you determine who has it.
+	6	Controlling your key is not a compromise One of the reasons companies maintain a copy of your decryption key is to help you with your account.  These companies believe they can’t offer certain services by giving you control of your key – we disagree.  We have architected iQabinet from the ground up, so that we offer an industry unique approach to capabilities like Password reset, and data retrieval, all without having to remove your control of your key.
+	7	You decide who you share your information with Many sites may say that “you decide” who you share your information with, but they hide caveats in their privacy statements, offer confusing “opt-in” requests so that they can generate advertising revenue from your information.  Its your right to not only determine who should be able to see your information, but to be 100% in control of requests to see your information – beyond an “opt-in”, and definitely more than an “opt-out”, your right is what might be called a “request-in” – you must be the one to request it.
+	8	We don’t market your information to anyone Our business model is simple – its between you and iQabinet.  Would a Financial Advisor sell their client list to a real estate agent? No way!!!Would a divorce attorney sell their client list to a matchmaking service?  No way!!! Seems almost comical, we feel the need to state an obvious right for a service like iQabinet – we don’t and won’t market your information to anyone
+	9	We only send you information that matters to you Every interaction we have with you we think about deeply.  We don’t take an email lightly, or an alert.  While everyone has different interests, you can be assured, that before we send an email, before we create a notification, we are thinking – why would this matter to you, why would you want to receive this?  And if we are not convinced that you would want receive it, we won’t sent it – and if we’re wrong, we’ll correct our mistake
+	10	We’re honest and forthright with you You have the right to know good news and bad news.  You have the right to hear it quickly, and you have the right for it to be explained clearly.
+
+iQabinet is secured from the ground up. Your communications with our systems utilize the most secure form of SSL encryption. In addition, all of your data stored on our servers is encrypted with Military grade security.
+
+
+Copyright 2015 iQabinet | Terms of Use | Privacy Policy
+

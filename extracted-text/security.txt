@@ -1,0 +1,32 @@
+
+	•	Product
+	•	Security
+	•	Bill of Rights
+	•	Blog
+	•	Contact Us
+	•	Login
+
+
+
+	•	Product
+	•	Security
+	•	Bill of Rights
+	•	Blog
+	•	Contact Us
+	•	Login
+
+
+iQabinet Security
+iQabinet is committed to delivering cloud based software with Military grade security.  Our services are secured from the ground up.  Your communications with our systems utilize the most secure form of SSL encryption. In addition, all of your data stored on our servers is encrypted with Military grade security.  Please refer to our Privacy and Security Bill of Rights for more information.
+	•	Physical Security iQabinet runs in the Amazon Web Service Cloud.  Amazon facilities are nondescript locations protected by military grade perimeters. Physical access is strictly controlled by two factor authentication and 24 hour security escorts.   Read more about Amazon Data Center Security.
+	•	State Of The Art Encryption All sensitive information is encrypted by iQabinet before it’s written to disk.  Within our systems, all of your data is stored using AES-128 encryption with a uniquely derived key for each user as recommended by NIST Special Publication 800-132. We encrypt every single personally identifiable field in the database, including your name and email address. For searching and indexing, we hash a small number of fields using HMAC. We apply the same encryption technique to all the files and their associated metadata that you upload.  As with all systems such as ours, the security of your information depends on you. Choose a strong password (we enforce that as best we can) and avoid using it with other services.  iQabinet is a secure system for sharing your information with others via our sharing functionality.  In addition we use 128-bit SSL encryption for all communications between you and iQabinet  and we require SSL on all communications.
+	•	Data Redundancy Data is backed up using Amazon S3 storage, providing extremely high durability. We perform regular backups of the all iQabinet databases and data integrity is validated on every individual update.
+	•	A Safe And Secure Hosting Platform iQabinet follows best practices to keep your data secure. We regularly audit our environments and code for security issues and apply patches expeditiously. We retain our own security experts to probe and verify the security of our site.
+	•	Administrative Access iQabinet administrators can never see your data or any documents that you upload.
+Keeping your data safe is our top priority.
+
+iQabinet is secured from the ground up. Your communications with our systems utilize the most secure form of SSL encryption. In addition, all of your data stored on our servers is encrypted with Military grade security.
+
+
+Copyright 2015 iQabinet | Terms of Use | Privacy Policy
+

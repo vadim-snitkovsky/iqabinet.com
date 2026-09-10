@@ -1,0 +1,8 @@
+{
+  "name": "iqabinet.com",
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node build.mjs && node --check build.mjs"
+  }
+}
