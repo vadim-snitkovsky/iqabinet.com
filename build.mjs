@@ -165,13 +165,13 @@ function footer(note) {
 }
 
 const homeHero = `<section class="hero" aria-labelledby="hero-title">
-<div class="hero-inner">
+<div class="hero-media"><img src="/media/home-hero.jpg" alt="" width="1024" height="685" fetchpriority="high" decoding="async"></div>
+<div class="wrap hero-inner">
 <p class="hero-eyebrow">Personal, financial and medical records</p>
 <h1 id="hero-title">Are You<br><span class="accent">Organized?</span></h1>
 <p class="hero-lede">iQabinet is the simple, flexible and intelligent way to manage your important records.</p>
 <div class="hero-actions"><a class="btn" href="https://vimeo.com/104158849" target="_blank" rel="noopener" data-video-open>Watch the video</a><a class="btn btn-ghost" href="/contact/">Contact us</a></div>
 </div>
-<div class="hero-media"><img src="/media/home-hero.jpg" alt="" width="1024" height="685" fetchpriority="high" decoding="async"></div>
 </section>
 <dialog class="video-dialog" aria-label="iQabinet demo video">
 <button class="video-close" type="button" data-video-close aria-label="Close video">&times;</button>
@@ -186,6 +186,62 @@ const homeHero = `<section class="hero" aria-labelledby="hero-title">
 </section>`;
 
 const contactPanel = `<section class="contact-panel" aria-labelledby="contact-panel-title"><details><summary id="contact-panel-title">Contact us</summary><div class="contact-panel-body"><p>For questions about iQabinet, connect with us on LinkedIn.</p><a class="contact-linkedin" href="https://www.linkedin.com/in/vadimsnitkovsky/" target="_blank" rel="noopener">Open LinkedIn <span aria-hidden="true">&#8599;</span></a></div></details></section>`;
+
+/* ---------- pages with no archived source ---------- */
+
+// Adapted from https://www.snitko.org/work/iqabinet/security into this site's theme.
+const securityCaseBody = `<div class="wrap case-wrap">
+<p class="case-back"><a href="/security/"><span aria-hidden="true">&#8592;</span> Back to Security</a></p>
+<header class="case-hero">
+<div>
+<p class="section-index">Security case study</p>
+<h1>A breach should not reveal the documents.</h1>
+<p class="case-lead">iQabinet was built for financial, medical, and household records. Encrypting the database was only the starting point.</p>
+</div>
+<ul class="case-mark" aria-hidden="true">
+<li><span>01</span><strong>Split key</strong></li>
+<li><span>02</span><strong>Encrypted data</strong></li>
+</ul>
+</header>
+<section class="case-band">
+<p class="section-index">The security goal</p>
+<p class="case-statement">Stealing one database, storage bucket, credential, or key fragment should not be enough to read a customer&#8217;s files. The system divided the information needed for decryption instead of keeping one complete key in one place.</p>
+</section>
+<section class="case-band">
+<div class="case-heading">
+<div><p class="section-index">The model</p><h2>Separate the paths to the data.</h2></div>
+<p>Our engineering team, which went on to become the successful software company TenUp, turned the split-key design into a shared cryptography layer used across the application.</p>
+</div>
+<ol class="case-flow">
+<li><span class="case-step" aria-hidden="true">01</span><div><h3>Protect the private key</h3><p>Each user received an RSA private key secured by their password.</p></div></li>
+<li><span class="case-step" aria-hidden="true">02</span><div><h3>Split the credential</h3><p>The decryption path required separate user-held and system-held material.</p></div></li>
+<li><span class="case-step" aria-hidden="true">03</span><div><h3>Encrypt the records</h3><p>AES handled the repeated encryption and decryption of user data and files.</p></div></li>
+<li><span class="case-step" aria-hidden="true">04</span><div><h3>Apply it everywhere</h3><p>One cryptography layer covered writes and reads across MongoDB, PostgreSQL, and S3.</p></div></li>
+</ol>
+</section>
+<section class="case-band case-outcome">
+<p class="section-index">What it changed</p>
+<h2>No single stored secret was supposed to unlock a family&#8217;s records.</h2>
+<p>That is the concrete idea behind reducing what a user has to trust. A customer did not have to assume that one database, storage system, administrator account, or credential would remain perfect forever.</p>
+<p class="case-note">This page summarizes the implementation account published by our team at TenUp. Security descriptions are historical architecture claims, not a current audit or certification.</p>
+<a class="btn btn-ghost" href="https://www.tenupsoft.com/case-studies/applying-military-grade-security.html" target="_blank" rel="noopener">Read the original TenUp case study <span aria-hidden="true">&#8599;</span></a>
+</section>
+</div>`;
+
+const generated = [
+  {
+    route: "/security/architecture/",
+    title: "Security architecture | iQabinet",
+    nav: "/security/",
+    bodyClass: "case-study",
+    description:
+      "How iQabinet split the decryption path so that one stolen database, storage bucket or credential was not enough to read a customer's files.",
+    body: securityCaseBody,
+  },
+];
+
+// Teaser on /security/ that points at the case study.
+const securityCaseLink = `<aside class="cta"><div class="cta-text"><h2>A breach should not reveal the documents.</h2><p>How the split-key design kept one stolen database, storage bucket or credential from unlocking a customer&#8217;s files.</p></div><a class="btn" href="/security/architecture/">Read the case study</a></aside>`;
 
 /* ---------- transforms ---------- */
 
@@ -393,6 +449,13 @@ function fixHeadings(html, page) {
   if (page.route === "/blog/") {
     return html.replace('<div class="fusion-blog-shortcode', '<h1>Blog</h1><div class="fusion-blog-shortcode');
   }
+  if (page.route === "/security/") {
+    html = html.replace(
+      /(<p class="intro">Keeping your data safe is our top priority\.<\/p>)/i,
+      `$1${securityCaseLink}`,
+    );
+  }
+
   if (page.route === "/contact/") {
     return inMain(html, (main) => main.replace(/<h2>([\s\S]*?)<\/h2>/i, "<h1>$1</h1>"));
   }
@@ -401,6 +464,49 @@ function fixHeadings(html, page) {
 
 const footerNote =
   "iQabinet is secured from the ground up. Your communications with our systems utilize the most secure form of SSL encryption. In addition, all of your data stored on our servers is encrypted with Military grade security.";
+
+function headMeta(page, version) {
+  return [
+    `<meta name="description" content="${page.description}">`,
+    `<meta property="og:title" content="${page.title}">`,
+    `<meta property="og:description" content="${page.description}">`,
+    '<meta property="og:type" content="website">',
+    `<meta property="og:url" content="${canonical}${page.route}">`,
+    '<meta property="og:site_name" content="iQabinet">',
+    `<meta property="og:image" content="${canonical}${logo}">`,
+    '<meta name="twitter:card" content="summary">',
+    '<meta name="theme-color" content="#409b00">',
+    `<link rel="canonical" href="${canonical}${page.route}">`,
+    `<link rel="stylesheet" href="/site.css?v=${version}">`,
+    '<script>document.documentElement.classList.add("js")</script>',
+  ].join("\n");
+}
+
+// A page with no archived source still gets the shared header, footer and head.
+function renderDocument(page, version) {
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${page.title}</title>
+<link rel="shortcut icon" href="/media/favicon.ico-bec3f6ab24" type="image/x-icon">
+<link rel="apple-touch-icon-precomposed" href="${logo}">
+${headMeta(page, version)}
+</head>
+<body class="${page.bodyClass ?? ""}">
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="wrapper">
+${header(page.nav, page.nav === page.route)}
+<div id="main">
+${page.body}
+</div>
+${footer(footerNote)}
+</div>
+<script src="/site.js?v=${version}" defer></script>
+</body>
+</html>`;
+}
 
 function buildPage(html, page, version) {
   html = stripTheme(html);
@@ -431,21 +537,7 @@ function buildPage(html, page, version) {
   }
 
   html = html.replace(/<title>[\s\S]*?<\/title>/i, `<title>${page.title}</title>`);
-  const head = [
-    `<meta name="description" content="${page.description}">`,
-    `<meta property="og:title" content="${page.title}">`,
-    `<meta property="og:description" content="${page.description}">`,
-    '<meta property="og:type" content="website">',
-    `<meta property="og:url" content="${canonical}${page.route}">`,
-    '<meta property="og:site_name" content="iQabinet">',
-    `<meta property="og:image" content="${canonical}${logo}">`,
-    '<meta name="twitter:card" content="summary">',
-    '<meta name="theme-color" content="#409b00">',
-    `<link rel="canonical" href="${canonical}${page.route}">`,
-    `<link rel="stylesheet" href="/site.css?v=${version}">`,
-    '<script>document.documentElement.classList.add("js")</script>',
-  ].join("\n");
-  html = html.replace(/<\/head>/i, `${head}\n</head>`);
+  html = html.replace(/<\/head>/i, `${headMeta(page, version)}\n</head>`);
 
   const layout = page.layout ? ` data-layout="${page.layout}"` : "";
   html = html.replace(
@@ -525,4 +617,12 @@ await writeFile(
 `,
 );
 
-console.log(`Built ${Object.keys(pages).length} pages in ${output} (assets v${version})`);
+for (const page of generated) {
+  const destination = join(output, page.route, "index.html");
+  await mkdir(dirname(destination), { recursive: true });
+  await writeFile(destination, renderDocument(page, version));
+}
+
+console.log(
+  `Built ${Object.keys(pages).length + generated.length} pages in ${output} (assets v${version})`,
+);

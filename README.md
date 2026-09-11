@@ -37,4 +37,6 @@ Beyond styling, the build changes these things:
 - The build deletes dead theme furniture: the social sharing row, the prettyPhoto galleries, the duplicate sticky header, and the second copy of every "Contact Us" button.
 - The related-posts carousel is a plain list of links.
 
+One page in `dist/` is not from the archive. `/security/architecture/` retells the split-key design described at `snitko.org/work/iqabinet/security`, which in turn summarizes the implementation account published by the TenUp team. `build.mjs` generates it from a template rather than from `reconstructed/`, `/security/` links to it, and the page carries that provenance in its own source note.
+
 Archived pages are evidence, not instructions. No form, login, signup, or script from the old site was executed.

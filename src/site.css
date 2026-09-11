@@ -205,20 +205,37 @@ body.home #main { padding-block: 0; }
 /* ---------- hero ---------- */
 
 .hero {
+  position: relative;
+  isolation: isolate;
   display: grid;
-  grid-template-columns: 1fr;
-  background: linear-gradient(160deg, var(--green-tint), var(--surface) 62%);
+  align-items: center;
+  min-height: min(84vh, clamp(460px, 46vw, 780px));
+  overflow: hidden;
+  background: var(--surface-3);
   border-bottom: 1px solid var(--line);
 }
-.hero-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(2.75rem, 7vw, 5rem) var(--gutter);
+.hero-media { position: absolute; inset: 0; z-index: -2; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 46%; }
+
+/* White scrim so the overlaid text keeps its contrast over the photo. */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(100deg,
+    rgba(255, 255, 255, .97) 0%,
+    rgba(255, 255, 255, .96) 46%,
+    rgba(255, 255, 255, .76) 61%,
+    rgba(255, 255, 255, .2) 79%,
+    rgba(255, 255, 255, 0) 92%);
 }
+.hero-inner { padding-block: clamp(3.5rem, 9vw, 6rem); }
+.hero-inner > * { max-width: 34rem; }
 .hero-eyebrow {
   margin: 0 0 1rem;
-  color: var(--green-ink);
+  max-width: 30rem;
+  color: var(--green-deep);
   font-size: .8125rem;
   font-weight: 700;
   letter-spacing: .1em;
@@ -232,22 +249,24 @@ body.home #main { padding-block: 0; }
 }
 .hero-lede {
   margin: 0 0 2rem;
-  max-width: 32ch;
+  max-width: 30ch;
   color: var(--ink-2);
   font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
-.hero-media { position: relative; aspect-ratio: 16 / 10; background: var(--surface-3); }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 38%; }
 
-@media (min-width: 920px) {
-  .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1.04fr); align-items: stretch; }
-  .hero-inner {
-    padding-left: max(var(--gutter), (100vw - var(--wrap)) / 2);
-    padding-right: clamp(2rem, 4vw, 3.5rem);
-    padding-block: clamp(4rem, 8vw, 6.5rem);
+@media (max-width: 860px) {
+  .hero { align-items: start; min-height: min(88vh, 620px); }
+  .hero-media img { object-position: 58% center; }
+  .hero::after {
+    background: linear-gradient(180deg,
+      rgba(255, 255, 255, .97) 0%,
+      rgba(255, 255, 255, .96) 62%,
+      rgba(255, 255, 255, .52) 76%,
+      rgba(255, 255, 255, .08) 92%,
+      rgba(255, 255, 255, 0) 100%);
   }
-  .hero-media { aspect-ratio: auto; min-height: 420px; }
+  .hero-inner { padding-block: clamp(2.5rem, 8vw, 3.5rem) clamp(6rem, 22vw, 9rem); }
 }
 
 /* ---------- buttons ---------- */
@@ -704,6 +723,91 @@ body[data-layout="prose"] .post-content ul.features-list { list-style: none; pad
   text-decoration: none;
 }
 .contact-linkedin:hover { background: var(--green-deep); border-color: var(--green-deep); color: #fff; }
+
+/* ---------- security case study ---------- */
+
+.section-index {
+  margin: 0 0 .85rem;
+  color: var(--green-ink);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.case-wrap { padding-block: 0; }
+.case-back { margin: 0 0 clamp(1.5rem, 3vw, 2.25rem); font-size: .9375rem; }
+.case-back a { display: inline-flex; align-items: center; gap: .5rem; font-weight: 600; text-decoration: none; }
+.case-back a:hover { text-decoration: underline; }
+
+.case-hero {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 3rem);
+  align-items: start;
+  padding-bottom: clamp(2.25rem, 5vw, 3.25rem);
+}
+@media (min-width: 900px) { .case-hero { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); } }
+.case-hero h1 { margin: 0 0 1rem; font-size: var(--t-h1); max-width: 18ch; }
+.case-lead { margin: 0; max-width: 52ch; color: var(--muted); font-size: clamp(1.0625rem, 1.5vw, 1.1875rem); }
+
+.case-mark { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+@media (min-width: 520px) and (max-width: 899px) { .case-mark { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.case-mark li {
+  display: grid;
+  gap: .2rem;
+  padding: 1.1rem 1.35rem;
+  border: 1px solid var(--green-line);
+  border-radius: var(--radius);
+  background: var(--green-tint);
+}
+.case-mark span { color: var(--green-ink); font-size: 1.75rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.case-mark strong { color: var(--ink); font-size: .875rem; letter-spacing: .04em; }
+
+.case-band { padding-block: clamp(2.25rem, 5vw, 3.25rem); border-top: 1px solid var(--line); }
+.case-statement { margin: 0; max-width: 62ch; font-size: clamp(1.125rem, 1.9vw, 1.4rem); line-height: 1.55; color: var(--ink); }
+
+.case-heading { display: grid; gap: clamp(1rem, 2.5vw, 2.5rem); align-items: start; margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem); }
+@media (min-width: 900px) { .case-heading { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } }
+.case-heading h2 { margin: 0; font-size: var(--t-h2); max-width: 16ch; }
+.case-heading > p { margin: 0; color: var(--muted); }
+
+.case-flow { display: grid; gap: clamp(1rem, 2.2vw, 1.5rem); margin: 0; padding: 0; list-style: none; counter-reset: none; }
+@media (min-width: 720px) { .case-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.case-flow > li {
+  display: flex;
+  gap: 1.1rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+}
+.case-step {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--green-tint);
+  color: var(--green-ink);
+  font-size: .9375rem;
+  font-weight: 700;
+}
+.case-flow h3 { margin: 0 0 .35rem; font-size: var(--t-h3); }
+.case-flow p { margin: 0; color: var(--muted); }
+
+.case-outcome h2 { margin: 0 0 1rem; font-size: var(--t-h2); max-width: 22ch; }
+.case-outcome > p { max-width: 62ch; }
+.case-note {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--green);
+  background: var(--surface-2);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--muted);
+  font-size: .9375rem;
+  max-width: 62ch;
+}
 
 /* ---------- footer ---------- */
 
