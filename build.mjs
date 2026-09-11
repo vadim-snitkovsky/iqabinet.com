@@ -138,8 +138,8 @@ function header(nav, exact) {
 }
 
 function footer(note) {
+  // Terms of Use lives in the legal line below, so it is not repeated here.
   const links = navigation
-    .concat([["/terms-of-service/", "Terms of Use"]])
     .map(([href, label]) => `<li><a href="${href}">${label}</a></li>`)
     .join("");
 
@@ -152,13 +152,13 @@ function footer(note) {
 
   return `<footer class="site-footer">
 <div class="wrap">
-<div class="site-footer-top">
-<p class="footer-note">${note}</p>
-<nav class="footer-nav" aria-label="Footer"><h2>iQabinet</h2><ul>${links}</ul></nav>
-</div>
-<div class="site-footer-bottom">
-<p>Copyright 2015 iQabinet &middot; <a href="/terms-of-service/">Terms of Use</a> &middot; <a href="/privacy-and-security-bill-of-rights/">Privacy Policy</a></p>
+<div class="site-footer-primary">
+<nav class="footer-nav" aria-label="Footer"><ul>${links}</ul></nav>
 <ul class="social">${social}</ul>
+</div>
+<div class="site-footer-fine">
+<p class="footer-note">${note}</p>
+<p class="footer-legal">Copyright 2015 iQabinet &middot; <a href="/terms-of-service/">Terms of Use</a> &middot; <a href="/privacy-and-security-bill-of-rights/">Privacy Policy</a></p>
 </div>
 </div>
 </footer>`;
