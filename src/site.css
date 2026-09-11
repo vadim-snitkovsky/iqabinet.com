@@ -217,18 +217,20 @@ body.home #main { padding-block: 0; }
 .hero-media { position: absolute; inset: 0; z-index: -2; }
 .hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 46%; }
 
-/* White scrim so the overlaid text keeps its contrast over the photo. */
+/* The text only reaches ~41% across, so the scrim holds its plateau to 34% and
+   is gone by 62%. Measured minimum for the worst pixel under the lede is .39;
+   .55 leaves headroom and keeps the walking figure clear. */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   background: linear-gradient(100deg,
-    rgba(255, 255, 255, .97) 0%,
-    rgba(255, 255, 255, .96) 46%,
-    rgba(255, 255, 255, .76) 61%,
-    rgba(255, 255, 255, .2) 79%,
-    rgba(255, 255, 255, 0) 92%);
+    rgba(255, 255, 255, .58) 0%,
+    rgba(255, 255, 255, .55) 34%,
+    rgba(255, 255, 255, .32) 44%,
+    rgba(255, 255, 255, .08) 54%,
+    rgba(255, 255, 255, 0) 62%);
 }
 .hero-inner { padding-block: clamp(3.5rem, 9vw, 6rem); }
 .hero-inner > * { max-width: 34rem; }
@@ -247,10 +249,11 @@ body.home #main { padding-block: 0; }
   line-height: 1.02;
   letter-spacing: -.035em;
 }
+.hero h1 .accent { color: var(--green-solid); }
 .hero-lede {
   margin: 0 0 2rem;
   max-width: 30ch;
-  color: var(--ink-2);
+  color: var(--ink);
   font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
 }
 .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
@@ -259,11 +262,13 @@ body.home #main { padding-block: 0; }
   .hero { align-items: start; min-height: min(88vh, 620px); }
   .hero-media img { object-position: 58% center; }
   .hero::after {
+    /* Portrait puts the headline over the dark suit, so the band behind the
+       text holds .84. Below it the photo runs nearly clean. */
     background: linear-gradient(180deg,
-      rgba(255, 255, 255, .97) 0%,
-      rgba(255, 255, 255, .96) 62%,
-      rgba(255, 255, 255, .52) 76%,
-      rgba(255, 255, 255, .08) 92%,
+      rgba(255, 255, 255, .86) 0%,
+      rgba(255, 255, 255, .84) 50%,
+      rgba(255, 255, 255, .36) 70%,
+      rgba(255, 255, 255, .06) 86%,
       rgba(255, 255, 255, 0) 100%);
   }
   .hero-inner { padding-block: clamp(2.5rem, 8vw, 3.5rem) clamp(6rem, 22vw, 9rem); }
@@ -298,7 +303,7 @@ body.home #main { padding-block: 0; }
 .btn:active { transform: translateY(1px); }
 
 .btn-ghost {
-  background: rgba(255, 255, 255, .92);
+  background: #fff;
   border-color: var(--line);
   color: var(--ink);
 }
@@ -865,19 +870,13 @@ body[data-layout="prose"] .post-content ul.features-list { list-style: none; pad
 .social svg { width: 18px; height: 18px; fill: currentColor; }
 
 .site-footer-fine {
-  display: grid;
-  gap: .75rem;
   margin-top: clamp(1.5rem, 3vw, 2rem);
   padding-top: clamp(1.25rem, 2.5vw, 1.75rem);
   border-top: 1px solid var(--line);
   font-size: .875rem;
   line-height: 1.6;
 }
-@media (min-width: 900px) {
-  .site-footer-fine { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
-  .footer-legal { text-align: right; }
-}
-.footer-note { margin: 0; max-width: 62ch; }
+.footer-note { margin: 0 0 .6rem; }
 .footer-legal { margin: 0; }
 .footer-legal a { color: var(--muted); text-decoration: underline; text-underline-offset: .2em; }
 .footer-legal a:hover { color: var(--green-ink); }
